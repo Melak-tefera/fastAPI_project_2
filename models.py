@@ -6,6 +6,7 @@ class User(Base):
     __tablename__ ="users"
     id:Mapped[int]=mapped_column(primary_key=True)
     name: Mapped[str]=mapped_column(String(100))
+    hashed_password: Mapped[str]=mapped_column(String(255))
     posts: Mapped[list["Post"]]= relationship(back_populates="owner")
     
 class Post(Base):
