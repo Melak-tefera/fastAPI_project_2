@@ -1,7 +1,9 @@
 from pydantic import BaseModel, ConfigDict
 
 class Usercreate(BaseModel):
-    name: str
+    name:str
+    username:str
+    password:str
 
 class Userread(BaseModel):
     id: int
