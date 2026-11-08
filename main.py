@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException
 from models import User
-from router import register, posts
+from router import register, posts, login
 from database import get_db
 from sqlalchemy.orm import Session
 import jwt
@@ -22,4 +22,5 @@ def get_current_user(token:str=Depends(oauth2_scheme), db: Session= Depends(get_
         raise HTTPException(401, "User no longer exists")
     return user
 app.include_router(register.router)
+app.include_router(login.router)
 app.include_router(posts.router)
