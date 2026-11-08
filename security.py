@@ -13,6 +13,7 @@ from models import User
 
 load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM="HS256"
 if not SECRET_KEY:
     raise RuntimeError("SECRET_KEY is missing. Add it to your .env file.")
 
@@ -23,3 +24,10 @@ def hased_password(password):
 
 def verify_password(pain, hashed):
     return ph.verify(pain, hashed)
+
+def create_token(user_id):
+    data={
+        "sub": str(user_id),
+        "exp": datetime.now(timezone.utc)+timedelta(minutes=30)
+    }
+    return jwt.encode(data, SECRET_KEY,algorithm=ALGORITHM)
