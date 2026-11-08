@@ -6,6 +6,7 @@ class Usercreate(BaseModel):
 class Userread(BaseModel):
     id: int
     name: str
+    username:str
     model_config=ConfigDict(from_attributes=True)
 
 class Postcreate(BaseModel):
@@ -17,3 +18,6 @@ class Postread(BaseModel):
     user_id:int
     model_config=ConfigDict(from_attributes=True)
     
+class Token(BaseModel):
+    access_token: str
+    token_type: str
