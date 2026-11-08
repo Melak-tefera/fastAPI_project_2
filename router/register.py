@@ -5,11 +5,11 @@ from models import User
 from schemas import Usercreate, Userread
 from security import hased_password
 
-router =APIRouter(tags=["Users"])
+router =APIRouter(tags=["Register"])
 
 @router.post("/register", response_model=Userread)
 def register(name: Usercreate, db: Session=Depends(get_db)):
-    user_taken= db.query(User).filter(User.username==name.username)
+    user_taken= db.query(User).filter(User.username==name.username).first()
     if user_taken:
         raise HTTPException(status_code=400, detail="username already taken")
     user= User(name=name.name, username= name.username, hased_password= hased_password(name.password))
