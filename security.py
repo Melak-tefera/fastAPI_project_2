@@ -15,3 +15,11 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 if not SECRET_KEY:
     raise RuntimeError("SECRET_KEY is missing. Add it to your .env file.")
+
+ph= PasswordHash.recommended()
+
+def hased_password(password):
+    return ph.hash(password)
+
+def verify_password(pain, hashed):
+    return ph.verify(pain, hashed)
