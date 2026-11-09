@@ -12,10 +12,10 @@ def register(name: Usercreate, db: Session=Depends(get_db)):
     user_taken= db.query(User).filter(User.username==name.username).first()
     if user_taken:
         raise HTTPException(status_code=400, detail="username already taken")
-    user= User(name=name.name, username= name.username, hased_password= hased_password(name.password))
+    user= User(name=name.name, username= name.username, hashed_password= hased_password(name.password))
     db.add(user)
     db.commit()
     db.refresh(user)
-    return {"message": "User created"}
+    return user
 
 

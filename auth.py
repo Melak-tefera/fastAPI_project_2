@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 import jwt
-from fastapi.security import OAuth2AuthorizationCodeBearer
+from fastapi.security import OAuth2PasswordBearer
 from database import get_db
 from models import User
 from security import SECRET_KEY, ALGORITHM
@@ -8,7 +8,7 @@ from models import User
 from fastapi import  Depends, HTTPException
 
 
-oauth2_scheme= OAuth2AuthorizationCodeBearer(tokenUrl="login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 
 
 def get_current_user(token:str=Depends(oauth2_scheme), db: Session= Depends(get_db)):
