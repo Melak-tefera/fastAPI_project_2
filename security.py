@@ -14,6 +14,8 @@ from models import User
 load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM="HS256"
+ACCESS_MINUTES = 15 # NEW
+REFRESH_DAYS = 7 # NEW
 if not SECRET_KEY:
     raise RuntimeError("SECRET_KEY is missing. Add it to your .env file.")
 
