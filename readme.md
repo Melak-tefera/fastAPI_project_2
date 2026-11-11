@@ -53,8 +53,10 @@ Authentication-related code is organized across:
 
 Replace the placeholder with your repository URL:
 
+### 1. Clone the Repository
+
 ```bash
-git clone <repository-url>
+git clone [https://github.com/Melak-tefera/fastAPI_project_2.git](https://github.com/Melak-tefera/fastAPI_project_2.git)
 cd fastAPI_project_2
 ```
 
